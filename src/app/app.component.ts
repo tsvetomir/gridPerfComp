@@ -4,7 +4,13 @@ import { filter } from 'rxjs/operators';
 
 import { routes } from './app-routing.module';
 
-import { IgxNavigationDrawerComponent } from 'igniteui-angular';
+import { IgxNavigationDrawerComponent,
+         CloseScrollStrategy ,
+         ConnectedPositioningStrategy,
+         HorizontalAlignment,
+         IgxDropDownComponent,
+         VerticalAlignment } from 'igniteui-angular';
+import { PeopleGenService } from './services/people-gen.service';
 
 
 @Component({
@@ -17,9 +23,26 @@ export class AppComponent implements OnInit {
     path: string,
     name: string
   }> = [];
+  public rowCount = 100;
+  public rowCountText = 'Rows: ${rowCount}';
+  public rowCounts = [100, 1000, 10000, 100000, 1000000];
+  @ViewChild('ddRowCount', { read: IgxDropDownComponent })
+  public ddRowCount: IgxDropDownComponent;
   @ViewChild(IgxNavigationDrawerComponent) public navdrawer: IgxNavigationDrawerComponent;
 
-  constructor(private router: Router) {
+
+  private _positionSettings = {
+    horizontalStartPoint: HorizontalAlignment.Left,
+    verticalStartPoint: VerticalAlignment.Bottom
+};
+private _overlaySettings = {
+  closeOnOutsideClick: true,
+  modal: false,
+  positionStrategy: new ConnectedPositioningStrategy(this._positionSettings),
+  scrollStrategy: new CloseScrollStrategy()
+};
+
+  constructor(private router: Router, private people: PeopleGenService) {
     for (const route of routes) {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
         this.topNavLinks.push({
@@ -40,5 +63,22 @@ export class AppComponent implements OnInit {
               this.navdrawer.close();
           }
       });
+
+      // this.ddRowCount.setSelectedItem(0);
+      this.selectRowCount(undefined);
   }
+
+  public toggleDropDown(eventArgs) {
+    this._overlaySettings.positionStrategy.settings.target = eventArgs.target;
+    this.ddRowCount.toggle(this._overlaySettings);
+}
+  public selectRowCount(eventArgs) {
+    if (this.ddRowCount) {
+      this.rowCount = Number(this.ddRowCount.selectedItem.element.nativeElement.innerHTML);
+    }
+    this.people.getData(this.rowCount);
+
+
+  }
+
 }
