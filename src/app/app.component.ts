@@ -74,7 +74,7 @@ private _overlaySettings = {
 }
   public selectRowCount(eventArgs) {
     if (this.ddRowCount) {
-      this.rowCount = Number(this.ddRowCount.selectedItem.element.nativeElement.innerHTML);
+      this.rowCount = Number(eventArgs.newSelection.element.nativeElement.innerHTML);
     }
     this.people.getData(this.rowCount);
 

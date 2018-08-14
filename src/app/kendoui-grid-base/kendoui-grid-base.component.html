@@ -1,5 +1,9 @@
 <div style="width: 960px; height: 550px;">
-<kendo-grid [data]="data | async" [height]="500"  >
+<kendo-grid [data]="gridView"
+    [skip]="skip" [pageSize]="pageSize"
+    [scrollable]="'virtual'"
+    [rowHeight]="35" [height]="500"
+    (pageChange)="pageChange($event)" >
     <kendo-grid-column field="Id">
     </kendo-grid-column>
     <kendo-grid-column field="Name">

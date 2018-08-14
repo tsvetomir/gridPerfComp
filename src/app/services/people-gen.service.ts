@@ -10,7 +10,7 @@ export class PeopleGenService {
   public records: Observable<PersonEntity[]>;
   private _records: BehaviorSubject<PersonEntity[]>;
   private _prevCount = -1;
-  private _data;
+  public _data;
   constructor() {
       this._records = new BehaviorSubject([]);
       this.records = this._records.asObservable();
