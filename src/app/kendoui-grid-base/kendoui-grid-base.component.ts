@@ -15,11 +15,9 @@ export class KendouiGridBaseComponent implements OnInit {
   public skip = 0;
   public pageSize = 100;
   public gridView: GridDataResult;
-  private count;
-
+  
   constructor(private finDataService: DataGenService) {
     this.data = this.finDataService._data;
-    this.count = this.finDataService.records.count;
     this.loadProducts();
   }
 
