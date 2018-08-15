@@ -12,6 +12,7 @@ import { WjGridModule } from 'wijmo/wijmo.angular2.grid';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { ResultsComponent } from './results/results.component';
 
 import { IgxGridBaseComponent } from './igxgrid-base/igxgrid-base.component';
 import { IgxGridWithFeaturesComponent } from './igxgrid-withFeatures/igxgrid-withFeatures.component';
@@ -27,11 +28,13 @@ import { WijmoGridWithFeaturesComponent } from './wijmo-grid-withFeatures/wijmo-
 
 import { PeopleGenService } from './services/people-gen.service';
 import { DataGenService } from './services/data-gen.service';
+import { RecordKeepingService } from './services/recordkeeping.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    ResultsComponent,
     IgxGridBaseComponent,
     IgxGridWithFeaturesComponent,
     AgGridBaseComponent,
@@ -59,7 +62,7 @@ import { DataGenService } from './services/data-gen.service';
     WjGridModule
 
   ],
-  providers: [PeopleGenService, DataGenService],
+  providers: [PeopleGenService, DataGenService, RecordKeepingService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

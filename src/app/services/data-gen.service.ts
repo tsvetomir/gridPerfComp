@@ -9,8 +9,8 @@ export class DataGenService {
 
   public records: Observable<any[]>;
   private _records: BehaviorSubject<any[]>;
-  private currentDate;
   public _data;
+
   constructor() {
       this._records = new BehaviorSubject([]);
       this.records = this._records.asObservable();
@@ -29,7 +29,6 @@ export class DataGenService {
 
   private generateData(count: number): any[] {
       const currData = [];
-      this.currentDate = new Date();
       for (let i = 0; i < count; i++) {
           const rand = Math.floor(Math.random() * Math.floor(DATA.length));
           const dataObj = Object.assign({}, DATA[rand]);

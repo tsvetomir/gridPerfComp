@@ -11,6 +11,7 @@ import { IgxNavigationDrawerComponent,
          IgxDropDownComponent,
          VerticalAlignment } from 'igniteui-angular';
 import { DataGenService } from './services/data-gen.service';
+import { RecordKeepingService } from './services/recordkeeping.service';
 
 @Component({
   selector: 'app-root',
@@ -48,7 +49,7 @@ private _overlaySettings = {
   scrollStrategy: new CloseScrollStrategy()
 };
 
-  constructor(private router: Router, private finDataService: DataGenService) {
+  constructor(private router: Router, private finDataService: DataGenService, private entries: RecordKeepingService) {
     for (const route of routes) {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
         this.topNavLinks.push({
@@ -61,7 +62,7 @@ private _overlaySettings = {
   }
 
   public subTreeChangeHandler(mutations) {
-    if (this.viewName) {
+    if (this.viewName && String(this.viewName).includes('Grid')) {
       if (this.docChangedTimeout) {
         clearTimeout(this.docChangedTimeout);
       }
@@ -77,9 +78,10 @@ private _overlaySettings = {
           return item.name === this.viewName;
         });
         route.time = elapsed.toFixed(2) + ' s';
-        this.viewName = null;
+        this.entries.addEntry(this.viewName, this.rowCount, 20, elapsed);
       }, 10);
     }
+    this.viewName = null;
   }
 
   public ngOnInit(): void {

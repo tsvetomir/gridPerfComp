@@ -1,9 +1,9 @@
-<div style="width: 960px; height: 550px;">
-<kendo-grid [data]="gridView"
+<div style="width: 960px;">
+  <kendo-grid [data]="gridView"
     [skip]="skip" [pageSize]="pageSize"
     [scrollable]="'virtual'"
     [resizable]="true"
-    [rowHeight]="35" [height]="940"
+    [rowHeight]="35" [height]="800"
     (pageChange)="pageChange($event)" >
     <kendo-grid-column width=50 field="ID"></kendo-grid-column>
     <kendo-grid-column width=120 field="Category"></kendo-grid-column>
@@ -23,7 +23,7 @@
     <kendo-grid-column width=90 field="StartY"></kendo-grid-column>
     <kendo-grid-column width=90 field="LowY"></kendo-grid-column>
     <kendo-grid-column width=90 field="Spread"></kendo-grid-column>
-    
+
     <!-- <kendo-grid-column width=90 field="A"></kendo-grid-column>
     <kendo-grid-column width=90 field="B"></kendo-grid-column>
     <kendo-grid-column width=90 field="C"></kendo-grid-column>

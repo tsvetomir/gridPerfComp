@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { ResultsComponent } from './results/results.component';
 
 import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';
 import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';
@@ -29,6 +30,7 @@ export const routes: Routes = [
   { path: 'igxgrid-withFeatures', component: IgxGridWithFeaturesComponent, data: { text: 'igxGrid with Features' } },
   { path: 'kendouigrid-withFeatures', component: KendouiGridWithFeaturesComponent, data: { text: 'kendoui Grid with Features' } },
   { path: 'wijmogrid-withFeatures', component: WijmoGridWithFeaturesComponent, data: { text: 'wijmo Grid with Features' } },
+  { path: 'results', component: ResultsComponent, data: { text: 'Results' } },
   { path: '**', component: PageNotFoundComponent } // must always be last
 ];
 

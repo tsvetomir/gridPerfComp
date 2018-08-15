@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { DATA } from '../Assets/financialData';
 import { PersonEntity } from '../entities/person-entity';
 import { BehaviorSubject, Observable } from 'rxjs';
 
