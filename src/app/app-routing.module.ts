@@ -22,12 +22,12 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent, data: { text: 'Home' } },
   { path: 'error', component: UncaughtErrorComponent },
   { path: 'igxgrid-base', component: IgxGridBaseComponent, data: { text: 'igxGrid' } },
-  { path: 'igxgrid-withFeatures', component: IgxGridWithFeaturesComponent, data: { text: 'igxGrid with Features' } },
   { path: 'aggrid-base', component: AgGridBaseComponent, data: { text: 'ag-Grid' } },
-  { path: 'aggrid-withFeatures', component: AgGridWithFeaturesComponent, data: { text: 'ag-Grid with Features' } },
   { path: 'kendouigrid-base', component: KendouiGridBaseComponent, data: { text: 'kendoui Grid' } },
-  { path: 'kendouigrid-withFeatures', component: KendouiGridWithFeaturesComponent, data: { text: 'kendoui Grid with Features' } },
   { path: 'wijmogrid-base', component: WijmoGridBaseComponent, data: { text: 'wijmo Grid' } },
+  { path: 'aggrid-withFeatures', component: AgGridWithFeaturesComponent, data: { text: 'ag-Grid with Features' } },
+  { path: 'igxgrid-withFeatures', component: IgxGridWithFeaturesComponent, data: { text: 'igxGrid with Features' } },
+  { path: 'kendouigrid-withFeatures', component: KendouiGridWithFeaturesComponent, data: { text: 'kendoui Grid with Features' } },
   { path: 'wijmogrid-withFeatures', component: WijmoGridWithFeaturesComponent, data: { text: 'wijmo Grid with Features' } },
   { path: '**', component: PageNotFoundComponent } // must always be last
 ];

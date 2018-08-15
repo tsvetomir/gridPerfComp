@@ -5,10 +5,6 @@
     [groupable]="true"
     [resizable]="true"
     [filterable]="true"
-    [sortable]="{
-        allowUnsort: allowUnsort,
-        mode: multiple ? 'multiple' : 'single'
-        }"
     [rowHeight]="35" [height]="800"
     (pageChange)="pageChange($event)" >
     <kendo-grid-column width=50 field="ID"></kendo-grid-column>
@@ -29,6 +25,7 @@
     <kendo-grid-column width=90 field="StartY"></kendo-grid-column>
     <kendo-grid-column width=90 field="LowY"></kendo-grid-column>
     <kendo-grid-column width=90 field="Spread"></kendo-grid-column>
+    
     <kendo-grid-column width=90 field="A"></kendo-grid-column>
     <kendo-grid-column width=90 field="B"></kendo-grid-column>
     <kendo-grid-column width=90 field="C"></kendo-grid-column>

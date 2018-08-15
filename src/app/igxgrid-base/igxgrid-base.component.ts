@@ -16,8 +16,7 @@ import { Benchmark } from '../Assets/benchmark';
 export class IgxGridBaseComponent implements OnInit {
   @Input() count;
   public data: Observable<PersonEntity[]>;
-  public loadTime;
-  public bm: Benchmark;
+  
   constructor(private route: ActivatedRoute, private finDataService: DataGenService) {
     this.data = this.finDataService.records;
   }
@@ -30,12 +29,4 @@ export class IgxGridBaseComponent implements OnInit {
       console.log('IGxGrid,' + this.renderingTime);
       });
   }
-
-  public onColumnInit(column: IgxColumnComponent) {
-    if (column.field === 'RegistererDate') {
-      column.formatter = (date => date.toLocaleDateString());
-    }
-  }
-
-
 }

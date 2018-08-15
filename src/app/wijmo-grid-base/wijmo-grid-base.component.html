@@ -1,14 +1,15 @@
-<wj-flex-grid style="width:960px; max-height:800px" [itemsSource]='data | async'>
-  <wj-flex-grid-column [binding]="'ID'"></wj-flex-grid-column>
+<wj-flex-grid style="width:960px; max-height:900px" height="900" [itemsSource]='data | async'
+>
+  <wj-flex-grid-column [binding]="'ID'" [width]="50"></wj-flex-grid-column>
   <wj-flex-grid-column [binding]="'Category'"></wj-flex-grid-column>
   <wj-flex-grid-column [binding]="'Type'"></wj-flex-grid-column>
-  <wj-flex-grid-column [binding]="'Spread'"></wj-flex-grid-column>
-  <wj-flex-grid-column [binding]="'OpenPrice'"></wj-flex-grid-column>
-  <wj-flex-grid-column [binding]="'Price'"></wj-flex-grid-column>
-  <wj-flex-grid-column [binding]="'Buy'"></wj-flex-grid-column>
-  <wj-flex-grid-column [binding]="'Sell'"></wj-flex-grid-column>
-  <wj-flex-grid-column [binding]="'Change'"></wj-flex-grid-column>
-  <wj-flex-grid-column [binding]="'ChangePercent'"></wj-flex-grid-column>
+  <wj-flex-grid-column [binding]="'Spread'" [width]="80"></wj-flex-grid-column>
+  <wj-flex-grid-column [binding]="'OpenPrice'" [width]="80"></wj-flex-grid-column>
+  <wj-flex-grid-column [binding]="'Price'" [width]="80"></wj-flex-grid-column>
+  <wj-flex-grid-column [binding]="'Buy'" [width]="80"></wj-flex-grid-column>
+  <wj-flex-grid-column [binding]="'Sell'" [width]="80"></wj-flex-grid-column>
+  <wj-flex-grid-column [binding]="'Change'" [width]="90"></wj-flex-grid-column>
+  <wj-flex-grid-column [binding]="'ChangePercent'" [width]="90"></wj-flex-grid-column>
   <wj-flex-grid-column [binding]="'Volume'"></wj-flex-grid-column>
   <wj-flex-grid-column [binding]="'HighD'"></wj-flex-grid-column>
   <wj-flex-grid-column [binding]="'LowD'"></wj-flex-grid-column>
@@ -17,6 +18,7 @@
   <wj-flex-grid-column [binding]="'StartY'"></wj-flex-grid-column>
   <wj-flex-grid-column [binding]="'LowY'"></wj-flex-grid-column>
   <wj-flex-grid-column [binding]="'Spread'"></wj-flex-grid-column>
+<!--   
   <wj-flex-grid-column [binding]="'A'"></wj-flex-grid-column>
   <wj-flex-grid-column [binding]="'B'"></wj-flex-grid-column>
   <wj-flex-grid-column [binding]="'C'"></wj-flex-grid-column>
@@ -96,5 +98,5 @@
   <wj-flex-grid-column [binding]="'BY'"></wj-flex-grid-column>
   <wj-flex-grid-column [binding]="'BZ'"></wj-flex-grid-column>
   <wj-flex-grid-column [binding]="'CA'"></wj-flex-grid-column>
-  <wj-flex-grid-column [binding]="'CB'"></wj-flex-grid-column>
+  <wj-flex-grid-column [binding]="'CB'"></wj-flex-grid-column> -->
 </wj-flex-grid>
