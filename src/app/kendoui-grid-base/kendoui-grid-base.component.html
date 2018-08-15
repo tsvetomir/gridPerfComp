@@ -2,108 +2,107 @@
 <kendo-grid [data]="gridView"
     [skip]="skip" [pageSize]="pageSize"
     [scrollable]="'virtual'"
+    [resizable]="true"
     [rowHeight]="35" [height]="800"
     (pageChange)="pageChange($event)" >
-    <kendo-grid-column field="ID"></kendo-grid-column>
-    
-    <kendo-grid-column field="Category"></kendo-grid-column>
-    <kendo-grid-column field="Type"></kendo-grid-column>
-    <kendo-grid-column field="Spread"></kendo-grid-column>
-    <kendo-grid-column field="OpenPrice"></kendo-grid-column>
-    <kendo-grid-column field="Price"></kendo-grid-column>
-    <kendo-grid-column field="Buy"></kendo-grid-column>
-    <kendo-grid-column field="Sell"></kendo-grid-column>
-    <kendo-grid-column field="Change"></kendo-grid-column>
-    <kendo-grid-column field="ChangePercent"></kendo-grid-column>
-    <kendo-grid-column field="Volume"></kendo-grid-column>
-    <kendo-grid-column field="HighD"></kendo-grid-column>
-    <kendo-grid-column field="LowD"></kendo-grid-column>
-    <kendo-grid-column field="HighY"></kendo-grid-column>
-    <kendo-grid-column field="LowY"></kendo-grid-column>
-    <kendo-grid-column field="StartY"></kendo-grid-column>
-    <kendo-grid-column field="LowY"></kendo-grid-column>
-    <kendo-grid-column field="Spread"></kendo-grid-column>
-<!--     
-    <kendo-grid-column field="A"></kendo-grid-column>
-    <kendo-grid-column field="B"></kendo-grid-column>
-    <kendo-grid-column field="C"></kendo-grid-column>
-    <kendo-grid-column field="D"></kendo-grid-column>
-    <kendo-grid-column field="E"></kendo-grid-column>
-    <kendo-grid-column field="F"></kendo-grid-column>
-    <kendo-grid-column field="G"></kendo-grid-column>
-    <kendo-grid-column field="H"></kendo-grid-column>
-    <kendo-grid-column field="I"></kendo-grid-column>
-    <kendo-grid-column field="J"></kendo-grid-column>
-    <kendo-grid-column field="K"></kendo-grid-column>
-    <kendo-grid-column field="L"></kendo-grid-column>
-    <kendo-grid-column field="M"></kendo-grid-column>
-    <kendo-grid-column field="N"></kendo-grid-column>
-    <kendo-grid-column field="O"></kendo-grid-column>
-    <kendo-grid-column field="P"></kendo-grid-column>
-    <kendo-grid-column field="Q"></kendo-grid-column>
-    <kendo-grid-column field="R"></kendo-grid-column>
-    <kendo-grid-column field="S"></kendo-grid-column>
-    <kendo-grid-column field="T"></kendo-grid-column>
-    <kendo-grid-column field="U"></kendo-grid-column>
-    <kendo-grid-column field="V"></kendo-grid-column>
-    <kendo-grid-column field="W"></kendo-grid-column>
-    <kendo-grid-column field="X"></kendo-grid-column>
-    <kendo-grid-column field="Y"></kendo-grid-column>
-    <kendo-grid-column field="Z"></kendo-grid-column>
-    <kendo-grid-column field="AA"></kendo-grid-column>
-    <kendo-grid-column field="AB"></kendo-grid-column>
-    <kendo-grid-column field="AC"></kendo-grid-column>
-    <kendo-grid-column field="AD"></kendo-grid-column>
-    <kendo-grid-column field="AE"></kendo-grid-column>
-    <kendo-grid-column field="AF"></kendo-grid-column>
-    <kendo-grid-column field="AG"></kendo-grid-column>
-    <kendo-grid-column field="AH"></kendo-grid-column>
-    <kendo-grid-column field="AI"></kendo-grid-column>
-    <kendo-grid-column field="AJ"></kendo-grid-column>
-    <kendo-grid-column field="AK"></kendo-grid-column>
-    <kendo-grid-column field="AL"></kendo-grid-column>
-    <kendo-grid-column field="AM"></kendo-grid-column>
-    <kendo-grid-column field="AN"></kendo-grid-column>
-    <kendo-grid-column field="AO"></kendo-grid-column>
-    <kendo-grid-column field="AP"></kendo-grid-column>
-    <kendo-grid-column field="AQ"></kendo-grid-column>
-    <kendo-grid-column field="AR"></kendo-grid-column>
-    <kendo-grid-column field="AS"></kendo-grid-column>
-    <kendo-grid-column field="AT"></kendo-grid-column>
-    <kendo-grid-column field="AU"></kendo-grid-column>
-    <kendo-grid-column field="AV"></kendo-grid-column>
-    <kendo-grid-column field="AW"></kendo-grid-column>
-    <kendo-grid-column field="AX"></kendo-grid-column>
-    <kendo-grid-column field="AY"></kendo-grid-column>
-    <kendo-grid-column field="AZ"></kendo-grid-column>
-    <kendo-grid-column field="BA"></kendo-grid-column>
-    <kendo-grid-column field="BB"></kendo-grid-column>
-    <kendo-grid-column field="BC"></kendo-grid-column>
-    <kendo-grid-column field="BD"></kendo-grid-column>
-    <kendo-grid-column field="BE"></kendo-grid-column>
-    <kendo-grid-column field="BF"></kendo-grid-column>
-    <kendo-grid-column field="BG"></kendo-grid-column>
-    <kendo-grid-column field="BH"></kendo-grid-column>
-    <kendo-grid-column field="BI"></kendo-grid-column>
-    <kendo-grid-column field="BJ"></kendo-grid-column>
-    <kendo-grid-column field="BK"></kendo-grid-column>
-    <kendo-grid-column field="BL"></kendo-grid-column>
-    <kendo-grid-column field="BM"></kendo-grid-column>
-    <kendo-grid-column field="BN"></kendo-grid-column>
-    <kendo-grid-column field="BO"></kendo-grid-column>
-    <kendo-grid-column field="BP"></kendo-grid-column>
-    <kendo-grid-column field="BQ"></kendo-grid-column>
-    <kendo-grid-column field="BR"></kendo-grid-column>
-    <kendo-grid-column field="BS"></kendo-grid-column>
-    <kendo-grid-column field="BT"></kendo-grid-column>
-    <kendo-grid-column field="BU"></kendo-grid-column>
-    <kendo-grid-column field="BV"></kendo-grid-column>
-    <kendo-grid-column field="BW"></kendo-grid-column>
-    <kendo-grid-column field="BX"></kendo-grid-column>
-    <kendo-grid-column field="BY"></kendo-grid-column>
-    <kendo-grid-column field="BZ"></kendo-grid-column>
-    <kendo-grid-column field="CA"></kendo-grid-column>
-    <kendo-grid-column field="CB"></kendo-grid-column>  -->
+    <kendo-grid-column width=50 field="ID"></kendo-grid-column>
+    <kendo-grid-column width=100 field="Category"></kendo-grid-column>
+    <kendo-grid-column width=120 field="Type"></kendo-grid-column>
+    <kendo-grid-column width=90 field="Spread"></kendo-grid-column>
+    <kendo-grid-column width=90 field="OpenPrice"></kendo-grid-column>
+    <kendo-grid-column width=90 field="Price"></kendo-grid-column>
+    <kendo-grid-column width=90 field="Buy"></kendo-grid-column>
+    <kendo-grid-column width=90 field="Sell"></kendo-grid-column>
+    <kendo-grid-column width=90 field="Change"></kendo-grid-column>
+    <kendo-grid-column width=90 field="ChangePercent"></kendo-grid-column>
+    <kendo-grid-column width=90 field="Volume"></kendo-grid-column>
+    <kendo-grid-column width=90 field="HighD"></kendo-grid-column>
+    <kendo-grid-column width=90 field="LowD"></kendo-grid-column>
+    <kendo-grid-column width=90 field="HighY"></kendo-grid-column>
+    <kendo-grid-column width=90 field="LowY"></kendo-grid-column>
+    <kendo-grid-column width=90 field="StartY"></kendo-grid-column>
+    <kendo-grid-column width=90 field="LowY"></kendo-grid-column>
+    <kendo-grid-column width=90 field="Spread"></kendo-grid-column>
+    <kendo-grid-column width=90 field="A"></kendo-grid-column>
+    <kendo-grid-column width=90 field="B"></kendo-grid-column>
+    <kendo-grid-column width=90 field="C"></kendo-grid-column>
+    <kendo-grid-column width=90 field="D"></kendo-grid-column>
+    <kendo-grid-column width=90 field="E"></kendo-grid-column>
+    <kendo-grid-column width=90 field="F"></kendo-grid-column>
+    <kendo-grid-column width=90 field="G"></kendo-grid-column>
+    <kendo-grid-column width=90 field="H"></kendo-grid-column>
+    <kendo-grid-column width=90 field="I"></kendo-grid-column>
+    <kendo-grid-column width=90 field="J"></kendo-grid-column>
+    <kendo-grid-column width=90 field="K"></kendo-grid-column>
+    <kendo-grid-column width=90 field="L"></kendo-grid-column>
+    <kendo-grid-column width=90 field="M"></kendo-grid-column>
+    <kendo-grid-column width=90 field="N"></kendo-grid-column>
+    <kendo-grid-column width=90 field="O"></kendo-grid-column>
+    <kendo-grid-column width=90 field="P"></kendo-grid-column>
+    <kendo-grid-column width=90 field="Q"></kendo-grid-column>
+    <kendo-grid-column width=90 field="R"></kendo-grid-column>
+    <kendo-grid-column width=90 field="S"></kendo-grid-column>
+    <kendo-grid-column width=90 field="T"></kendo-grid-column>
+    <kendo-grid-column width=90 field="U"></kendo-grid-column>
+    <kendo-grid-column width=90 field="V"></kendo-grid-column>
+    <kendo-grid-column width=90 field="W"></kendo-grid-column>
+    <kendo-grid-column width=90 field="X"></kendo-grid-column>
+    <kendo-grid-column width=90 field="Y"></kendo-grid-column>
+    <kendo-grid-column width=90 field="Z"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AA"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AB"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AC"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AD"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AE"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AF"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AG"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AH"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AI"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AJ"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AK"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AL"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AM"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AN"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AO"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AP"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AQ"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AR"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AS"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AT"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AU"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AV"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AW"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AX"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AY"></kendo-grid-column>
+    <kendo-grid-column width=90 field="AZ"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BA"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BB"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BC"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BD"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BE"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BF"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BG"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BH"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BI"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BJ"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BK"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BL"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BM"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BN"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BO"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BP"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BQ"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BR"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BS"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BT"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BU"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BV"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BW"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BX"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BY"></kendo-grid-column>
+    <kendo-grid-column width=90 field="BZ"></kendo-grid-column>
+    <kendo-grid-column width=90 field="CA"></kendo-grid-column>
+    <kendo-grid-column width=90 field="CB"></kendo-grid-column>  
 
 </kendo-grid>
 </div>

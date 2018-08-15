@@ -27,7 +27,7 @@ export class IgxGridBaseComponent implements OnInit {
     setTimeout( function () {
       // Logs when Angular is done processing databinding
       this.renderingTime = new Date().valueOf() - start.valueOf();
-      console.log('IGxGrid rendering time:' + this.renderingTime + ' ms');
+      console.log('IGxGrid,' + this.renderingTime);
       });
   }
 

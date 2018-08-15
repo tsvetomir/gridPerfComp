@@ -22,7 +22,7 @@ export class WijmoGridBaseComponent implements OnInit {
     setTimeout( function () {
       // Logs when Angular is done processing databinding
       this.renderingTime = new Date().valueOf() - start.valueOf();
-      console.log('Wijmo grid rendering time: ' + this.renderingTime + ' ms');
+      console.log('Wijmo,' + this.renderingTime);
       });
 
   }

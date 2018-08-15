@@ -13,11 +13,13 @@ import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 export class KendouiGridBaseComponent implements OnInit {
   public data = [];
   public skip = 0;
-  public pageSize = 60;
+  public pageSize = 100;
   public gridView: GridDataResult;
+  private count;
 
   constructor(private finDataService: DataGenService) {
     this.data = this.finDataService._data;
+    this.count = this.finDataService.records.count;
     this.loadProducts();
   }
 
@@ -36,7 +38,7 @@ export class KendouiGridBaseComponent implements OnInit {
     setTimeout( function () {
       // Logs when Angular is done processing databinding
       this.renderingTime = new Date().valueOf() - start.valueOf();
-      console.log('KendoUI grid rendering time: ' + this.renderingTime + ' ms');
+      console.log('KendoUI,' + this.renderingTime);
       });
 
   }

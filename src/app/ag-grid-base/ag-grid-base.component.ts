@@ -124,7 +124,7 @@ export class AgGridBaseComponent implements OnInit {
     setTimeout( function () {
       // Logs when Angular is done processing databinding
       this.renderingTime = new Date().valueOf() - start.valueOf();
-      console.log('Ag-Grid rendering time: ' + this.renderingTime + ' ms');
+      console.log('Ag-grid,' + this.renderingTime);
       });
 
   }
