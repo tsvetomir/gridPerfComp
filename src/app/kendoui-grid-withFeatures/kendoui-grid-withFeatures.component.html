@@ -2,7 +2,13 @@
 <kendo-grid [data]="gridView"
     [skip]="skip" [pageSize]="pageSize"
     [scrollable]="'virtual'"
+    [groupable]="true"
     [resizable]="true"
+    [filterable]="true"
+    [sortable]="{
+        allowUnsort: allowUnsort,
+        mode: multiple ? 'multiple' : 'single'
+        }"
     [rowHeight]="35" [height]="800"
     (pageChange)="pageChange($event)" >
     <kendo-grid-column width=50 field="ID"></kendo-grid-column>
