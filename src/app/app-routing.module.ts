@@ -7,7 +7,10 @@ import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.com
 import { ErrorRoutingModule } from './error-routing/error-routing.module';
 import { IgxGridBaseComponent } from './igxgrid-base/igxgrid-base.component';
 import { IgxGridWithFeaturesComponent } from './igxgrid-withFeatures/igxgrid-withFeatures.component';
+
 import { AgGridBaseComponent } from './ag-grid-base/ag-grid-base.component';
+import { AgGridWithFeaturesComponent } from './ag-grid-withFeatures/ag-grid-withFeatures.component';
+
 import { KendouiGridBaseComponent } from './kendoui-grid-base/kendoui-grid-base.component';
 import { WijmoGridBaseComponent } from './wijmo-grid-base/wijmo-grid-base.component';
 
@@ -18,6 +21,7 @@ export const routes: Routes = [
   { path: 'igxgrid-base', component: IgxGridBaseComponent, data: { text: 'igxGrid' } },
   { path: 'igxgrid-withFeatures', component: IgxGridWithFeaturesComponent, data: { text: 'igxGrid with Features' } },
   { path: 'aggrid-base', component: AgGridBaseComponent, data: { text: 'ag-Grid' } },
+  { path: 'aggrid-withFeatures', component: AgGridWithFeaturesComponent, data: { text: 'ag-Grid with Features' } },
   { path: 'kendouigrid-base', component: KendouiGridBaseComponent, data: { text: 'kendoui Grid' } },
   { path: 'wijmogrid-base', component: WijmoGridBaseComponent, data: { text: 'wijmo Grid' } },
   { path: '**', component: PageNotFoundComponent } // must always be last

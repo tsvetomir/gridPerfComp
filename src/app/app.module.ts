@@ -17,6 +17,8 @@ import { IgxGridBaseComponent } from './igxgrid-base/igxgrid-base.component';
 import { IgxGridWithFeaturesComponent } from './igxgrid-withFeatures/igxgrid-withFeatures.component';
 
 import { AgGridBaseComponent } from './ag-grid-base/ag-grid-base.component';
+import { AgGridWithFeaturesComponent } from './ag-grid-withFeatures/ag-grid-withFeatures.component';
+
 import { KendouiGridBaseComponent } from './kendoui-grid-base/kendoui-grid-base.component';
 import { WijmoGridBaseComponent } from './wijmo-grid-base/wijmo-grid-base.component';
 
@@ -30,6 +32,7 @@ import { DataGenService } from './services/data-gen.service';
     IgxGridBaseComponent,
     IgxGridWithFeaturesComponent,
     AgGridBaseComponent,
+    AgGridWithFeaturesComponent,
     KendouiGridBaseComponent,
     WijmoGridBaseComponent
   ],
