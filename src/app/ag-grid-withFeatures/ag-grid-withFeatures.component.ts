@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PeopleGenService } from '../services/people-gen.service';
 import { DataGenService } from '../services/data-gen.service';
-import { PersonEntity } from '../entities/person-entity';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-ag-grid-withFeatures',
+  selector: 'app-ag-grid-withfeatures',
   templateUrl: './ag-grid-withFeatures.component.html',
   styleUrls: ['./ag-grid-withFeatures.component.scss']
 })
@@ -112,7 +110,7 @@ export class AgGridWithFeaturesComponent implements OnInit {
     {headerName: 'CB', field: 'CB'}
   ];
 
-  public data: Observable<PersonEntity[]>;
+  public data: Observable<any[]>;
 
   constructor(private finDataService: DataGenService) {
     this.data = this.finDataService.records;
@@ -120,13 +118,6 @@ export class AgGridWithFeaturesComponent implements OnInit {
 
 
   ngOnInit() {
-    const start = new Date();
-    setTimeout( function () {
-      // Logs when Angular is done processing databinding
-      this.renderingTime = new Date().valueOf() - start.valueOf();
-      console.log('Ag-grid,' + this.renderingTime);
-      });
-
   }
 
 }

@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { NavigationStart, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 import { routes } from './app-routing.module';
@@ -10,7 +10,6 @@ import { IgxNavigationDrawerComponent,
          HorizontalAlignment,
          IgxDropDownComponent,
          VerticalAlignment } from 'igniteui-angular';
-import { PeopleGenService } from './services/people-gen.service';
 import { DataGenService } from './services/data-gen.service';
 
 @Component({
@@ -21,20 +20,27 @@ import { DataGenService } from './services/data-gen.service';
 export class AppComponent implements OnInit {
   public topNavLinks: Array<{
     path: string,
-    name: string
+    name: string,
+    time: string
   }> = [];
   public rowCount = 100;
   public rowCountText = 'Rows: ${rowCount}';
   public rowCounts = [100, 1000, 10000, 100000, 1000000];
+
   @ViewChild('ddRowCount', { read: IgxDropDownComponent })
   public ddRowCount: IgxDropDownComponent;
-  @ViewChild(IgxNavigationDrawerComponent) public navdrawer: IgxNavigationDrawerComponent;
-
+  @ViewChild(IgxNavigationDrawerComponent)
+  public navdrawer: IgxNavigationDrawerComponent;
+  @ViewChild('contentHolder')
+  public content: ElementRef;
 
   private _positionSettings = {
     horizontalStartPoint: HorizontalAlignment.Left,
     verticalStartPoint: VerticalAlignment.Bottom
 };
+private docChangedTimeout;
+private viewName;
+private startTime;
 private _overlaySettings = {
   closeOnOutsideClick: true,
   modal: false,
@@ -47,9 +53,32 @@ private _overlaySettings = {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
         this.topNavLinks.push({
           name: route.data.text,
-          path: '/' + route.path
+          path: '/' + route.path,
+          time: null
         });
       }
+    }
+  }
+
+  public subTreeChangeHandler(mutations) {
+    if (this.viewName) {
+      if (this.docChangedTimeout) {
+        clearTimeout(this.docChangedTimeout);
+      }
+
+      this.docChangedTimeout = setTimeout(() => {
+
+        // measure elapsed time when DOM stops changing for a while
+        const endTime = new Date();
+        const elapsed = (endTime.getTime() - this.startTime.getTime()) / 1000;
+        console.log('Time to load View ' + this.viewName + ': ' +  elapsed.toFixed(2) + ' s');
+
+        const route = this.topNavLinks.find((item) => {
+          return item.name === this.viewName;
+        });
+        route.time = elapsed.toFixed(2) + ' s';
+        this.viewName = null;
+      }, 10);
     }
   }
 
@@ -64,7 +93,22 @@ private _overlaySettings = {
           }
       });
 
-      // this.ddRowCount.setSelectedItem(0);
+      this.router.events.pipe(
+        filter((x) => x instanceof NavigationEnd)
+      )
+      .subscribe((event: NavigationEnd) => {
+        this.startTime = new Date();
+        const route = routes.find((item) => {
+          return '/' + item.path === event.url;
+        });
+        this.viewName = route && route.data ? route.data.text : null;
+      });
+
+      const target = this.content.nativeElement;
+
+      const observer = new MutationObserver((mutations) => { this.subTreeChangeHandler(mutations); });
+      observer.observe(target, {subtree: true, childList: true });
+
       this.selectRowCount(undefined);
   }
 
@@ -78,8 +122,6 @@ private _overlaySettings = {
     }
 
     this.finDataService.getData(this.rowCount);
-
-
   }
 
 }

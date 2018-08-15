@@ -20,13 +20,11 @@ export class DataGenService {
       this._data = DATA;
       if (count) {
           this._data = this.generateData(count);
-      }
-      else
-      {
+      } else {
         this._data = this.generateData(DATA.length);
       }
       this._records.next(this._data);
-      console.log("Generated records:" + this._data.length);
+      console.log('Generated records:' + this._data.length);
   }
 
   private generateData(count: number): any[] {
