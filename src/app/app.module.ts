@@ -20,7 +20,10 @@ import { AgGridBaseComponent } from './ag-grid-base/ag-grid-base.component';
 import { AgGridWithFeaturesComponent } from './ag-grid-withFeatures/ag-grid-withFeatures.component';
 
 import { KendouiGridBaseComponent } from './kendoui-grid-base/kendoui-grid-base.component';
+import { KendouiGridWithFeaturesComponent } from './kendoui-grid-withFeatures/kendoui-grid-withFeatures.component';
+
 import { WijmoGridBaseComponent } from './wijmo-grid-base/wijmo-grid-base.component';
+import { WijmoGridWithFeaturesComponent } from './wijmo-grid-withFeatures/wijmo-grid-withFeatures.component';
 
 import { PeopleGenService } from './services/people-gen.service';
 import { DataGenService } from './services/data-gen.service';
@@ -34,7 +37,9 @@ import { DataGenService } from './services/data-gen.service';
     AgGridBaseComponent,
     AgGridWithFeaturesComponent,
     KendouiGridBaseComponent,
-    WijmoGridBaseComponent
+    KendouiGridWithFeaturesComponent,
+    WijmoGridBaseComponent,
+    WijmoGridWithFeaturesComponent
   ],
   imports: [
     FormsModule,
