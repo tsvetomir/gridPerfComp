@@ -11,7 +11,7 @@ import { IgxNavigationDrawerComponent,
          IgxDropDownComponent,
          VerticalAlignment } from 'igniteui-angular';
 import { PeopleGenService } from './services/people-gen.service';
-
+import { DataGenService } from './services/data-gen.service';
 
 @Component({
   selector: 'app-root',
@@ -42,7 +42,7 @@ private _overlaySettings = {
   scrollStrategy: new CloseScrollStrategy()
 };
 
-  constructor(private router: Router, private people: PeopleGenService) {
+  constructor(private router: Router, private finDataService: DataGenService) {
     for (const route of routes) {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
         this.topNavLinks.push({
@@ -76,7 +76,8 @@ private _overlaySettings = {
     if (this.ddRowCount) {
       this.rowCount = Number(eventArgs.newSelection.element.nativeElement.innerHTML);
     }
-    this.people.getData(this.rowCount);
+
+    this.finDataService.getData(this.rowCount);
 
 
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IgxColumnComponent } from 'igniteui-angular';
 import { PeopleGenService } from '../services/people-gen.service';
+import { DataGenService } from '../services/data-gen.service';
 import { PersonEntity } from '../entities/person-entity';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -17,9 +18,8 @@ export class IgxGridBaseComponent implements OnInit {
   public data: Observable<PersonEntity[]>;
   public loadTime;
   public bm: Benchmark;
-  constructor(private route: ActivatedRoute, private people: PeopleGenService) {
-    this.people.getData(this.count);
-    this.data = this.people.records;
+  constructor(private route: ActivatedRoute, private finDataService: DataGenService) {
+    this.data = this.finDataService.records;
   }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class IgxGridBaseComponent implements OnInit {
     setTimeout( function () {
       // Logs when Angular is done processing databinding
       this.renderingTime = new Date().valueOf() - start.valueOf();
-      console.log('Rendering time: ' + this.renderingTime + ' ms');
+      console.log('IGxGrid rendering time:' + this.renderingTime + ' ms');
       });
   }
 
