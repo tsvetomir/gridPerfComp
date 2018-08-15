@@ -14,6 +14,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 import { IgxGridBaseComponent } from './igxgrid-base/igxgrid-base.component';
+import { IgxGridWithFeaturesComponent } from './igxgrid-withFeatures/igxgrid-withFeatures.component';
+
 import { AgGridBaseComponent } from './ag-grid-base/ag-grid-base.component';
 import { KendouiGridBaseComponent } from './kendoui-grid-base/kendoui-grid-base.component';
 import { WijmoGridBaseComponent } from './wijmo-grid-base/wijmo-grid-base.component';
@@ -26,6 +28,7 @@ import { DataGenService } from './services/data-gen.service';
     AppComponent,
     HomeComponent,
     IgxGridBaseComponent,
+    IgxGridWithFeaturesComponent,
     AgGridBaseComponent,
     KendouiGridBaseComponent,
     WijmoGridBaseComponent
