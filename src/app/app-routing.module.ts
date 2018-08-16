@@ -27,11 +27,11 @@ export const routes: Routes = [
   { path: 'aggrid-base', component: AgGridBaseComponent, data: { text: 'ag-Grid', cols: 19 } },
   { path: 'kendouigrid-base', component: KendouiGridBaseComponent, data: { text: 'kendoui Grid', cols: 19 } },
   { path: 'wijmogrid-base', component: WijmoGridBaseComponent, data: { text: 'wijmo Grid', cols: 19 } },
-  { path: 'aggrid-withFeatures', component: AgGridWithFeaturesComponent, data: { text: 'ag-Grid with Features', cols: 98 } },
-  { path: 'igxgrid-withFeatures', component: IgxGridWithFeaturesComponent, data: { text: 'igxGrid with Features', cols: 98 } },
-  { path: 'kendouigrid-withFeatures', component: KendouiGridWithFeaturesComponent,
-      data: { text: 'kendoui Grid with Features', cols: 98 } },
-  { path: 'wijmogrid-withFeatures', component: WijmoGridWithFeaturesComponent, data: { text: 'wijmo Grid with Features', cols: 98 } },
+  // { path: 'aggrid-withFeatures', component: AgGridWithFeaturesComponent, data: { text: 'ag-Grid with Features', cols: 98 } },
+  // { path: 'igxgrid-withFeatures', component: IgxGridWithFeaturesComponent, data: { text: 'igxGrid with Features', cols: 98 } },
+  // { path: 'kendouigrid-withFeatures', component: KendouiGridWithFeaturesComponent,
+  //     data: { text: 'kendoui Grid with Features', cols: 98 } },
+  // { path: 'wijmogrid-withFeatures', component: WijmoGridWithFeaturesComponent, data: { text: 'wijmo Grid with Features', cols: 98 } },
   { path: '**', component: PageNotFoundComponent } // must always be last
 ];
 
