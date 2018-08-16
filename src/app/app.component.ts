@@ -28,9 +28,15 @@ export class AppComponent implements OnInit {
   public rowCount = 100;
   public rowCountText = 'Rows: ${rowCount}';
   public rowCounts = [100, 1000, 10000, 100000, 1000000];
+  
+  public colCount = 10;
+  public colCountText = 'Cols: ${colCount}';
+  public colCounts = [10, 100];
 
   @ViewChild('ddRowCount', { read: IgxDropDownComponent })
   public ddRowCount: IgxDropDownComponent;
+  @ViewChild('ddColCount', { read: IgxDropDownComponent })
+  public ddColCount: IgxDropDownComponent;
   @ViewChild(IgxNavigationDrawerComponent)
   public navdrawer: IgxNavigationDrawerComponent;
   @ViewChild('contentHolder')
@@ -123,12 +129,29 @@ private _overlaySettings = {
     this._overlaySettings.positionStrategy.settings.target = eventArgs.target;
     this.ddRowCount.toggle(this._overlaySettings);
 }
+  public toggleColDropDown(eventArgs) {
+  this._overlaySettings.positionStrategy.settings.target = eventArgs.target;
+  this.ddColCount.toggle(this._overlaySettings);
+}
+
   public selectRowCount(eventArgs) {
+    //update button value
     if (this.ddRowCount) {
       this.rowCount = Number(eventArgs.newSelection.element.nativeElement.innerHTML);
     }
 
+    //update data source with an updated record count
     this.finDataService.getData(this.rowCount);
+  }
+
+  public selectColCount(eventArgs) {
+    //update button value
+    if (this.ddColCount) {
+      this.colCount = Number(eventArgs.newSelection.element.nativeElement.innerHTML);
+    }
+
+    //TODO: add code to set a global variable indicating the number of columns
+
   }
 
 }

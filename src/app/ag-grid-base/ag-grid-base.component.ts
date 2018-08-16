@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 
 export class AgGridBaseComponent implements OnInit {
+  //setting the first 10 columns with specified column widths to make sure that all grids display an equivalent amount of cells
   columnDefs = [
     {field: 'Col0', width: 60},
     {field: 'Col1', width: 120},
@@ -19,19 +20,20 @@ export class AgGridBaseComponent implements OnInit {
     {field: 'Col6', width: 90},
     {field: 'Col7', width: 90},
     {field: 'Col8', width: 90},
-    {field: 'Col9'},
-    {field: 'Col10'},
-    {field: 'Col11'},
-    {field: 'Col12'},
-    {field: 'Col13'},
-    {field: 'Col14'},
-    {field: 'Col5'}
+    {field: 'Col9'}
   ];
 
   public data: Observable<any[]>;
 
   constructor(private finDataService: DataGenService) {
     this.data = this.finDataService.records;
+
+    //add the column count as a parameter in this loop here - for now using 100 as that's all the column data we have in the data source
+    for (let i = 10; i < 100; i++) {
+      var fieldName = 'Col' + i.toString();
+      var newField = {field: fieldName, width: 90};
+      this.columnDefs.push(newField);
+    }
   }
 
 
