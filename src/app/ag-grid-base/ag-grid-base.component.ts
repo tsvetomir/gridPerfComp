@@ -10,25 +10,23 @@ import { Observable } from 'rxjs';
 
 export class AgGridBaseComponent implements OnInit {
   columnDefs = [
-    {headerName: 'ID', field: 'ID', width: 60},
-    {headerName: 'Category', field: 'Category', width: 120},
-    {headerName: 'Type', field: 'Type', width: 100},
-    {headerName: 'Spread', field: 'Spread', width: 90},
-    {headerName: 'Open Price', field: 'OpenPrice', width: 90},
-    {headerName: 'Price', field: 'Price', width: 90},
-    {headerName: 'Buy', field: 'Buy', width: 90},
-    {headerName: 'Sell', field: 'Sell', width: 90},
-    {headerName: 'Change', field: 'Change', width: 90},
-    {headerName: 'Change(%)', field: 'ChangePercent'},
-    {headerName: 'Volume', field: 'Volume'},
-    {headerName: 'High(D)', field: 'HighD'},
-    {headerName: 'Low(D)', field: 'LowD'},
-    {headerName: 'High(Y)', field: 'HighY'},
-    {headerName: 'Low(Y)', field: 'LowY'},
-    {headerName: 'Start(Y)', field: 'StartY'},
-    {headerName: 'Low(Y)', field: 'LowY'},
-    {headerName: 'Spread', field: 'Spread'}
-
+    {field: 'Col0', width: 60},
+    {field: 'Col1', width: 120},
+    {field: 'Col2', width: 100},
+    {field: 'Col3', width: 90},
+    {field: 'Col4', width: 90},
+    {field: 'Col5', width: 90},
+    {field: 'Col6', width: 90},
+    {field: 'Col7', width: 90},
+    {field: 'Col8', width: 90},
+    {field: 'Col9'},
+    {field: 'Col10'},
+    {field: 'Col11'},
+    {field: 'Col12'},
+    {field: 'Col13'},
+    {field: 'Col14'},
+    {field: 'Col5'}
+    
     // ,{headerName: 'A', field: 'A'},
     // {headerName: 'B', field: 'B'},
     // {headerName: 'C', field: 'C'},
