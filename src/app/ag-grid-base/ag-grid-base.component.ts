@@ -29,11 +29,11 @@ export class AgGridBaseComponent implements OnInit {
     this.data = this.finDataService.records;
 
     //add the column count as a parameter in this loop here - for now using 100 as that's all the column data we have in the data source
-    for (let i = 10; i < 100; i++) {
-      var fieldName = 'Col' + i.toString();
-      var newField = {field: fieldName, width: 90};
-      this.columnDefs.push(newField);
-    }
+    //for (let i = 10; i < 100; i++) {
+    //  var fieldName = 'Col' + i.toString();
+    //  var newField = {field: fieldName, width: 90};
+    //  this.columnDefs.push(newField);
+    //}
   }
 
 
