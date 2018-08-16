@@ -22,7 +22,8 @@ export class AppComponent implements OnInit {
   public topNavLinks: Array<{
     path: string,
     name: string,
-    time: string
+    time: string,
+    cols: number
   }> = [];
   public rowCount = 100;
   public rowCountText = 'Rows: ${rowCount}';
@@ -41,6 +42,8 @@ export class AppComponent implements OnInit {
 };
 private docChangedTimeout;
 private viewName;
+public navTitle;
+
 private startTime;
 private _overlaySettings = {
   closeOnOutsideClick: true,
@@ -55,7 +58,8 @@ private _overlaySettings = {
         this.topNavLinks.push({
           name: route.data.text,
           path: '/' + route.path,
-          time: null
+          time: null,
+          cols: route.data.cols
         });
       }
     }
@@ -78,10 +82,10 @@ private _overlaySettings = {
           return item.name === this.viewName;
         });
         route.time = elapsed.toFixed(2) + ' s';
-        this.entries.addEntry(this.viewName, this.rowCount, 20, elapsed);
+        this.entries.addEntry(this.viewName, this.rowCount, route.cols, elapsed);
+        this.viewName = null;
       }, 10);
     }
-    this.viewName = null;
   }
 
   public ngOnInit(): void {
@@ -104,6 +108,7 @@ private _overlaySettings = {
           return '/' + item.path === event.url;
         });
         this.viewName = route && route.data ? route.data.text : null;
+        this.navTitle = this.viewName;
       });
 
       const target = this.content.nativeElement;
