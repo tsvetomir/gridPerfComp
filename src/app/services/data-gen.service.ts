@@ -18,7 +18,7 @@ export class DataGenService {
 
   public getData(count: number) {
       this._data = this.generateData(count);
-      
+
       this._records.next(this._data);
       console.log('Generated records:' + this._data.length);
   }

@@ -1,33 +1,35 @@
 import { Injectable } from '@angular/core';
-import { PersonEntity } from '../entities/person-entity';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { IgxColumnComponent } from '../../../node_modules/igniteui-angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PeopleGenService {
-  public records: Observable<PersonEntity[]>;
-  private _records: BehaviorSubject<PersonEntity[]>;
-  private _prevCount = -1;
+  public records: Observable<any[]>;
+  private _records: BehaviorSubject<any[]>;
+  private _prevRowCount = -1;
+  private _prevColCount = -1;
   public _data;
   constructor() {
       this._records = new BehaviorSubject([]);
       this.records = this._records.asObservable();
   }
 
-  public getData(count?: number) {
-    if (!count && !this._data) {
-      this._data = this.getPeople(5);
-    }
-
-    if (count && this._prevCount !== Number(count)) {
-      count = Number(count);
-      this._data = this.getPeople(count);
-      this._prevCount = count;
-    }
-
+  public getData() {
     this._records.next(this._data);
+  }
 
+  public buildData(rowCount: number, addlColCount: number) {
+    if (this._prevRowCount !== Number(rowCount) ||
+        this._prevColCount !== Number(addlColCount)) {
+      rowCount = Number(rowCount);
+      addlColCount = Number(addlColCount);
+      this._data = this.getPeople(rowCount, addlColCount);
+      this._prevRowCount = rowCount;
+      this._prevColCount = addlColCount;
+    }
+    this._records.next(this._data);
   }
 
 
@@ -35,7 +37,7 @@ export class PeopleGenService {
     return Math.round((Math.random() * (max - min) + min));
   }
 
-  getPeople(count): PersonEntity[] {
+  getPeople(count, addlColCount): any[] {
     const p = [];
     const months = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
                      'October', 'November', 'December' ];
@@ -75,12 +77,15 @@ export class PeopleGenService {
          Street: streetName[this.randomInt(0, 26)] + ' ' + streetSuffix[this.randomInt(0, 14)],
          City: city[this.randomInt(0, 49)],
          Phone: this.randomInt(201, 999) + '-' + this.randomInt(211, 999) + '-' + this.randomInt(1000, 9999),
-         Country: 'USA',
          Language: language[this.randomInt(0, 11)],
          Sports: sport[this.randomInt(0, 7)],
          IsActive: this.randomInt(0, 1) === 0
         }
       );
+      for (let j = 1; j <= addlColCount; j++) {
+        p[i]['AddlCol' + String(j).padStart(3, '0')] = Math.random().toFixed(2);
+      }
+
     }
     return p;
   }
