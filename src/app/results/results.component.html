@@ -1,14 +1,18 @@
 <button (click)="exportButtonHandler()">Export Data to Excel</button>
 <igx-grid #resultsGrid [data]="data | async" [autoGenerate]="false" [rowHeight]="28"
-   width="960px" height="800px" (onColumnInit)="onColumnInit($event)" >
-   <igx-column  field="TimeStamp"   width="135"
-                sortable="true" resizable="true"></igx-column>
-   <igx-column  field="ViewName"    width="300"
-                sortable="true" groupable="true" resizable="true" filterable="true"></igx-column>
-   <igx-column  field="RowCount"    width="120" header="Rows"
-                sortable="true" groupable="true" resizable="true" filterable="true"></igx-column>
-   <igx-column  field="ColumnCount" width="125" header="Cols"
-                sortable="true" groupable="true" resizable="true" filterable="true"></igx-column>
-   <igx-column  field="TimeElapsed" width="120" header="T(ms)"
-                sortable="true" groupable="true" resizable="true" filterable="true"></igx-column>
+  width="960px" height="800px" (onColumnInit)="onColumnInit($event)" [groupsExpanded]="false">
+  <igx-column  field="TimeStamp"   width="135"
+               sortable="true" resizable="true"></igx-column>
+  <igx-column  field="ViewName"    width="300"
+               sortable="true" groupable="true" resizable="true" filterable="true">
+    <ng-template igxGroupByRow let-groupRow>
+      <span>{{ groupRow.value }} Count: {{ groupRow.records.length }} Average: {{ GetAverage(groupRow.records) }}</span>
+    </ng-template>
+  </igx-column>
+  <igx-column  field="RowCount"    width="120" header="Rows"
+               sortable="true" groupable="true" resizable="true" filterable="true"></igx-column>
+  <igx-column  field="ColumnCount" width="125" header="Cols"
+               sortable="true" groupable="true" resizable="true" filterable="true"></igx-column>
+  <igx-column  field="TimeElapsed" width="120" header="T(ms)"
+               sortable="true" groupable="true" resizable="true" filterable="true"></igx-column>
 </igx-grid>

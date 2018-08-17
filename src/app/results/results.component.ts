@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RecordKeepingService } from '../services/recordkeeping.service';
 import { RecordEntryEntity } from '../entities/record-entry-entity';
-import { IgxGridComponent, IgxColumnComponent, IgxExcelExporterService, IgxExcelExporterOptions } from 'igniteui-angular';
+import { IgxGridComponent, IgxColumnComponent, IgxExcelExporterService,
+         IgxExcelExporterOptions, GroupedRecords, SortingDirection, ISortingExpression } from 'igniteui-angular';
 
 @Component({
   selector: 'app-results',
@@ -19,6 +20,7 @@ export class ResultsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.resultsGrid.groupingExpressions = [ { fieldName: 'ViewName', dir: SortingDirection.Desc } ];
   }
 
   public exportButtonHandler() {
@@ -29,6 +31,16 @@ export class ResultsComponent implements OnInit {
     if (column.field === 'TimeStamp') {
       column.formatter = (date => date.toLocaleTimeString());
     }
-    
+  }
+
+  public GetAverage(records: GroupedRecords) {
+    let ttl = 0;
+    let record;
+
+    for (let i = 0; i < records.length; i++) {
+      record = records[i];
+      ttl += Number(record.TimeElapsed);
+    }
+    return (ttl / records.length).toFixed(2);
   }
 }
