@@ -10,13 +10,6 @@
             {{ rowCount }}
           </igx-drop-down-item>
         </igx-drop-down>
-        
-        <button #btnColCountDD igxButton="raised" (click)="toggleColDropDown($event)">Columns:{{colCount}}</button>
-        <igx-drop-down igxDrawerItem (onSelection)="selectColCount($event)" #ddColCount>
-          <igx-drop-down-item [igxDropDownItemNavigation]="ddColCount" *ngFor="let colCount of colCounts">
-            {{ colCount }}
-          </igx-drop-down-item>
-        </igx-drop-down>
       </span>
     </ng-template>
   </igx-nav-drawer>

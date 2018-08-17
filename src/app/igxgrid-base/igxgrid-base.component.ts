@@ -1,8 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { DataGenService } from '../services/data-gen.service';
 import { Observable } from 'rxjs';
-import { IgxGridComponent, IgxColumnComponent } from 'igniteui-angular';
-import { PeopleGenService } from '../services/people-gen.service';
 
 @Component({
   selector: 'app-igxgrid-base',
@@ -11,9 +9,8 @@ import { PeopleGenService } from '../services/people-gen.service';
 })
 export class IgxGridBaseComponent implements OnInit {
   public data: Observable<any[]>;
-  @ViewChild('grid') public grid: IgxGridComponent;
 
-  constructor(private finDataService: PeopleGenService) {
+  constructor(private finDataService: DataGenService) {
     this.data = this.finDataService.records;
   }
 
