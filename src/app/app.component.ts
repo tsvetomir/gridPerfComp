@@ -11,6 +11,7 @@ import { IgxNavigationDrawerComponent,
          IgxDropDownComponent,
          VerticalAlignment } from 'igniteui-angular';
 import { DataGenService } from './services/data-gen.service';
+import { PeopleGenService } from './services/people-gen.service';
 import { RecordKeepingService } from './services/recordkeeping.service';
 
 @Component({
@@ -28,7 +29,7 @@ export class AppComponent implements OnInit {
   public rowCount = 100;
   public rowCountText = 'Rows: ${rowCount}';
   public rowCounts = [100, 1000, 10000, 100000, 1000000];
-  
+
   public colCount = 10;
   public colCountText = 'Cols: ${colCount}';
   public colCounts = [10, 100];
@@ -58,7 +59,8 @@ private _overlaySettings = {
   scrollStrategy: new CloseScrollStrategy()
 };
 
-  constructor(private router: Router, private finDataService: DataGenService, private entries: RecordKeepingService) {
+  constructor(private router: Router, private finDataService: DataGenService,
+    private peopleService: PeopleGenService, private entries: RecordKeepingService) {
     for (const route of routes) {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
         this.topNavLinks.push({
@@ -135,23 +137,22 @@ private _overlaySettings = {
 }
 
   public selectRowCount(eventArgs) {
-    //update button value
+    // update button value
     if (this.ddRowCount) {
       this.rowCount = Number(eventArgs.newSelection.element.nativeElement.innerHTML);
     }
 
-    //update data source with an updated record count
-    this.finDataService.getData(this.rowCount);
+    // update data source with an updated record count
+    this.peopleService.buildData(this.rowCount, this.colCount - 10);
   }
 
   public selectColCount(eventArgs) {
-    //update button value
+    // update button value
     if (this.ddColCount) {
       this.colCount = Number(eventArgs.newSelection.element.nativeElement.innerHTML);
     }
 
-    //TODO: add code to set a global variable indicating the number of columns
-
+    this.peopleService.buildData(this.rowCount, this.colCount - 10);
   }
 
 }

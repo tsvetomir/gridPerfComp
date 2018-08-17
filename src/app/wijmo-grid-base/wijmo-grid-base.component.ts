@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataGenService } from '../services/data-gen.service';
 import { Observable } from 'rxjs';
+import { FlexGrid } from 'wijmo/wijmo.grid';
+import { WjFlexGrid } from 'wijmo/wijmo.angular2.grid';
 
 
 @Component({
@@ -10,12 +12,14 @@ import { Observable } from 'rxjs';
 })
 export class WijmoGridBaseComponent implements OnInit {
   public data: Observable<any[]>;
-
+  @ViewChild('grid') public grid: FlexGrid;
+  @ViewChild('grid') public grid2: WjFlexGrid;
   constructor(private finDataService: DataGenService) {
     this.data = this.finDataService.records;
   }
 
   ngOnInit() {
+
   }
 
 }

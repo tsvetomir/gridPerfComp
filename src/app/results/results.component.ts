@@ -29,6 +29,6 @@ export class ResultsComponent implements OnInit {
     if (column.field === 'TimeStamp') {
       column.formatter = (date => date.toLocaleTimeString());
     }
-    
+
   }
 }
