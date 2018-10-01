@@ -113,8 +113,8 @@ private _overlaySettings = {
 
       const target = this.content.nativeElement;
 
-      const observer = new MutationObserver((mutations) => { this.subTreeChangeHandler(mutations); });
-      observer.observe(target, {subtree: true, childList: true });
+      //const observer = new MutationObserver((mutations) => { this.subTreeChangeHandler(mutations); });
+      //observer.observe(target, {subtree: true, childList: true });
 
       this.selectRowCount(undefined);
   }
