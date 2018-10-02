@@ -10,7 +10,7 @@ import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 export class KendouiGridWithFeaturesComponent implements OnInit {
   public data = [];
   public skip = 0;
-  public pageSize = 100;
+  public pageSize = 30;
   public gridView: GridDataResult;
 
   constructor(private finDataService: DataGenService) {

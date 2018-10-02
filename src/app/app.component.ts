@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { NavigationStart, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -52,7 +52,8 @@ private _overlaySettings = {
   scrollStrategy: new CloseScrollStrategy()
 };
 
-  constructor(private router: Router, private finDataService: DataGenService, private entries: RecordKeepingService) {
+constructor(private router: Router, private finDataService: DataGenService, private entries: RecordKeepingService,
+            private zone: NgZone) {
     for (const route of routes) {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
         this.topNavLinks.push({
@@ -72,7 +73,6 @@ private _overlaySettings = {
       }
 
       this.docChangedTimeout = setTimeout(() => {
-
         // measure elapsed time when DOM stops changing for a while
         const endTime = new Date();
         const elapsed = (endTime.getTime() - this.startTime.getTime()) / 1000;
@@ -82,7 +82,9 @@ private _overlaySettings = {
           return item.name === this.viewName;
         });
         route.time = elapsed.toFixed(2) + ' s';
-        this.entries.addEntry(this.viewName, this.rowCount, route.cols, elapsed);
+        this.zone.run(() => {
+          this.entries.addEntry(this.viewName, this.rowCount, route.cols, elapsed);
+        });
         this.viewName = null;
       }, 10);
     }
@@ -111,10 +113,11 @@ private _overlaySettings = {
         this.navTitle = this.viewName;
       });
 
-      const target = this.content.nativeElement;
-
-      //const observer = new MutationObserver((mutations) => { this.subTreeChangeHandler(mutations); });
-      //observer.observe(target, {subtree: true, childList: true });
+      this.zone.runOutsideAngular(() => {
+        const target = this.content.nativeElement;
+        const observer = new MutationObserver((mutations) => { this.subTreeChangeHandler(mutations); });
+        observer.observe(target, {subtree: true, childList: true });
+      });
 
       this.selectRowCount(undefined);
   }
